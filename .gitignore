@@ -3,7 +3,6 @@
 *.pdf
 *.Rmd
 *.zip
-*.md
 *.docx
 .RData
 .ipynb_checkpoints/
