@@ -4,7 +4,7 @@ redirect_from:
 interact_link: content/Pendahuluan.ipynb
 kernel_name: ir
 has_widgets: false
-title: 'Pendahuluan'
+title: 'Pengenalan Statistik'
 prev_page:
   url: 
   title: ''
@@ -15,7 +15,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 ---
 
 
-# Pendahuluan
+# Pengenalan Statistik
 
 
 
