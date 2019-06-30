@@ -9,23 +9,13 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: /MempersiapkanData
-  title: 'Mempersiapkan Data'
+  url: /MenyiapkanData
+  title: 'Menyiapkan Data'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
 
-# Statistika Ekonomi dan Keuangan Islam
-- Semester Antara 2019
-
-
-
 # Pendahuluan
-
-
-
-<h1>Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Mengapa-Belajar-Statistik?" data-toc-modified-id="Mengapa-Belajar-Statistik?-1">Mengapa Belajar Statistik?</a></span></li><li><span><a href="#Software-Statistik" data-toc-modified-id="Software-Statistik-2">Software Statistik</a></span><ul class="toc-item"><li><span><a href="#Software-R" data-toc-modified-id="Software-R-2.1">Software R</a></span></li><li><span><a href="#R-Online" data-toc-modified-id="R-Online-2.2">R Online</a></span></li></ul></li><li><span><a href="#Pengertian" data-toc-modified-id="Pengertian-3">Pengertian</a></span><ul class="toc-item"><li><span><a href="#Jenis-Statistik" data-toc-modified-id="Jenis-Statistik-3.1">Jenis Statistik</a></span></li><li><span><a href="#Macam-Variabel" data-toc-modified-id="Macam-Variabel-3.2">Macam Variabel</a></span></li><li><span><a href="#Skala-Pengukuran" data-toc-modified-id="Skala-Pengukuran-3.3">Skala Pengukuran</a></span></li></ul></li></ul></div>
 
 
 
@@ -64,6 +54,7 @@ Banyak macam software yang memiliki program statistik. Sebagian software khusus 
 - Gratis dan lengkap, bersaing dengan software statistik berbayar
 - Download installer R di [cran.r-project.org](https://cran.r-project.org)
 - Download juga RStudio Desktop di [rstudio.com](https://www.rstudio.com/products/rstudio/download) untuk antarmuka grafis
+- Download RStudio dari link-link berikut jika sistem operasi masih 32-bit: [Windows](http://download1.rstudio.org/RStudio-1.1.463.exe), [Ubuntu](http://download1.rstudio.org/rstudio-1.1.463-i386.deb), [Red Hat/Fedora](http://download1.rstudio.org/rstudio-1.1.463-i686.rpm), atau [MacOS El Capitan dan sebelumnya](http://download1.rstudio.org/RStudio-1.1.463.dmg)
 
 
 

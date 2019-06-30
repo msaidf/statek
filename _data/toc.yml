@@ -26,6 +26,8 @@
   url: /Pendahuluan
 - title: Menyiapkan Data
   url: /MenyiapkanData
+- title: Grafik dengan GGplot
+  url: /GGplot
 
 # # Top-level page
 # - title: Home
