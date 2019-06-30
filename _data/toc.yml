@@ -22,12 +22,20 @@
 # See the links below for an example.
 
 # Pendahuluan
-- title: Pengenalan Statistik
-  url: /Pendahuluan
+- title: Sampul
+  url: /Sampul
+- title: Pengantar Statistik
+  url: /IntroStat
+- title: Pengenalan R
+  url: /IntroR
 - title: Menyiapkan Data
   url: /MenyiapkanData
-- title: Grafik dengan GGplot
-  url: /GGplot
+- title: Visualisasi Data
+  url: /Visual
+- title: Pengantar Ekonometri
+  url: /IntroMetrik
+- title: Estimasi dan Pelaporan
+  url: /EstRep
 
 # # Top-level page
 # - title: Home

@@ -6,11 +6,11 @@ kernel_name: ir
 has_widgets: false
 title: 'Menyiapkan Data'
 prev_page:
-  url: /Pendahuluan
-  title: 'Pendahuluan'
+  url: /IntroR
+  title: 'Pengenalan R'
 next_page:
-  url: /GGplot
-  title: 'Grafik dengan GGplot'
+  url: /Visual
+  title: 'Visualisasi Data'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -19,17 +19,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-## Di Balik Layar
-- Proses paling makan waktu
-- Sering tidak diajarkan
-- Padahal "sampah masuk, sampah keluar"
-
-
-
-## Memperoleh Data
-- Dari sumber langsung: BI, BPS, World Bank, IMF
-- Dari layanan penyedia data: ORBIS, Bloomberg, Quandl
-- Dari library R: quandl, bls
+## Pekerjaan Di Balik Layar
+- Menyiapkan data (*data cleaning*) sering menjadi pekerjaan paling memakan waktu
+- Metode menyiapkan data jarang diajarkan dalam kelas
+- Padahal kesalahan dalam menyiapkan data bisa mengubah hasil analisis
 
 
 
