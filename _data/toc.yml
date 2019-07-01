@@ -21,9 +21,17 @@
 #
 # See the links below for an example.
 
-# Pendahuluan
+# Top-level page
 - title: Sampul
   url: /Sampul
+  not_numbered: true
+# Divider for meta-pages and content page
+- divider: true
+# External link
+# - title: Repository Git
+#   url: https://github.com/msaidf/statek
+#   external: true
+#   not_numbered: true
 - title: Pengantar Statistik
   url: /IntroStat
 - title: Pengenalan R
@@ -33,27 +41,14 @@
 - title: Visualisasi Data
   url: /Visual
 - title: Pengantar Ekonometri
-  url: /IntroMetrik
+  url: /Sampul
 - title: Estimasi dan Pelaporan
-  url: /EstRep
+  url: /Sampul
 
-# # Top-level page
-# - title: Home
-#   url: /intro
-#   not_numbered: true
-
-# # External link
-# - title: GitHub repository
-#   url: https://github.com/jupyter/jupyter-book
-#   external: true
-#   not_numbered: true
 
 # # Adds a searchbar link
 # - title: Search
 #   search: true
-
-# # Divider for meta-pages and content page
-# - divider: true
 
 # # Add a header and sample content section
 # - header: Demo textbook
