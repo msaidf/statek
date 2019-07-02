@@ -30,8 +30,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 
-- Dengan library `rio`, kita bisa mengimpor ke R data dari berbagai macam format: `txt`, `csv`, `xls`, `xlsx`, `dbf`, `sav`, `dta`, `sas7.bdat`. 
-- Data yang diimpor akan menjadi obyek R tipe `data.frame` 
+Dengan library `rio`, kita bisa mengimpor ke R data dari berbagai macam format: `txt`, `csv`, `xls`, `xlsx`, `dbf`, `sav`, `dta`, `sas7.bdat`. Data yang diimpor akan menjadi obyek R tipe `data.frame`.
+
+Install dulu package `rio` jika belum pernah diinstal sebelumnya. Muat package tersebut dengan perintah `library` 
 
 
 
@@ -39,7 +40,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="input_area" markdown="1">
 ```R
 # install.packages('rio')
-datakab = rio::import('https://raw.githubusercontent.com/msaidf/statek/master/indo-dapoer_data.csv')
+library(rio)
+datakab = import('https://raw.githubusercontent.com/msaidf/statek/master/content/indo-dapoer_data.csv')
 
 ```
 </div>
@@ -52,7 +54,7 @@ datakab = rio::import('https://raw.githubusercontent.com/msaidf/statek/master/in
 
 
 
-- Tampilkan keseluruhan data dengan mengenter nama obyek data
+Tampilkan keseluruhan data dengan mengenter nama obyek data. Namun untuk data yang besar, ini tidak banyak membantu bahkan bisa makan waktu lama. 
 
 
 
@@ -68,15 +70,14 @@ datakab
 
 
 
-- Namun untuk data yang besar, ini tidak banyak membantu bahkan bisa makan waktu lama
-- Karenanya cek dulu besarnya data dari dimensi matriksnya.
+Perlu dibiasakan untuk mengecek dulu jumlah baris dari tabel data
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-dim(datakab)
+nrow(datakab)
 
 ```
 </div>
@@ -85,11 +86,7 @@ dim(datakab)
 <div class="output_subarea" markdown="1">
 
 <div markdown="0" class="output output_html">
-<ol class=list-inline>
-	<li>12017</li>
-	<li>19</li>
-</ol>
-
+12017
 </div>
 
 </div>
@@ -98,15 +95,14 @@ dim(datakab)
 
 
 
-- `head` dan `tail` menampilkan baris teratas dan terbawah data 
-- bisa menyebutkan jumlah baris yang diinginkan.
+<br>Gunakan `head` dan `tail` untuk menampilkan `n` baris teratas dan terbawah 
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-head(datakab); tail(datakab, n = 8)
+head(datakab, n = 3)
 
 ```
 </div>
@@ -118,12 +114,9 @@ head(datakab); tail(datakab, n = 8)
 <table>
 <thead><tr><th scope="col">Region Name</th><th scope="col">Region Code</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th><th scope="col">2010 [YR2010]</th><th scope="col">2011 [YR2011]</th><th scope="col">2012 [YR2012]</th><th scope="col">2013 [YR2013]</th><th scope="col">2014 [YR2014]</th></tr></thead>
 <tbody>
-	<tr><td>Aceh Barat Daya, Kab.                        </td><td>IDN_Aceh_Barat_Daya_Kab_73623                </td><td>Human Development Index                      </td><td>IDX.HDI                                      </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>65.87778                                     </td><td>66.86649                                     </td><td>67.52173                                     </td><td>68.36661                                     </td><td>69.38033                                     </td><td>..                                           </td><td>..                                           </td><td>70.95                                        </td><td>..                                           </td><td>72.07                                        </td><td>..                                           </td></tr>
-	<tr><td>Aceh Barat Daya, Kab.                        </td><td>IDN_Aceh_Barat_Daya_Kab_73623                </td><td>Morbidity Rate (in %)                        </td><td>SH.MORB.ZS                                   </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>29.19532                                     </td><td>..                                           </td><td>33.22042                                     </td><td>35.90795                                     </td><td>31.811                                       </td><td>29.2377                                      </td><td>30.0167                                      </td><td>33.93033                                     </td><td>30.5736273527145                             </td><td>29.909548163414                              </td><td>..                                           </td></tr>
-	<tr><td>Aceh Barat Daya, Kab.                        </td><td>IDN_Aceh_Barat_Daya_Kab_73623                </td><td>Net Enrollment Ratio: Primary (in %)         </td><td>SE.PRM.NENR.ZS                               </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>94.65                                        </td><td>..                                           </td><td>94.89                                        </td><td>94.34                                        </td><td>96.21                                        </td><td>96.55                                        </td><td>98.32                                        </td><td>86.16                                        </td><td>90.96                                        </td><td>95.395058                                    </td><td>97.03                                        </td></tr>
-	<tr><td>Aceh Barat Daya, Kab.                        </td><td>IDN_Aceh_Barat_Daya_Kab_73623                </td><td>Net Enrollment Ratio: Junior Secondary (in %)</td><td>SE.JRSEC.NENR.ZS                             </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>74.33                                        </td><td>..                                           </td><td>69.13                                        </td><td>76.71                                        </td><td>80.7                                         </td><td>65.59                                        </td><td>75.62                                        </td><td>68.52                                        </td><td>78.25                                        </td><td>87.201385                                    </td><td>87.02                                        </td></tr>
-	<tr><td>Aceh Barat Daya, Kab.                        </td><td>IDN_Aceh_Barat_Daya_Kab_73623                </td><td>Net Enrollment Ratio: Senior Secondary (in %)</td><td>SE.SRSEC.NENR.ZS                             </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>54.23                                        </td><td>..                                           </td><td>52.97                                        </td><td>61.7                                         </td><td>62.9                                         </td><td>65.55                                        </td><td>67.8                                         </td><td>65.99                                        </td><td>60.86                                        </td><td>63.46043                                     </td><td>72.64                                        </td></tr>
-	<tr><td>Aceh Barat Daya, Kab.                        </td><td>IDN_Aceh_Barat_Daya_Kab_73623                </td><td>Number of hospitals                          </td><td>SH.HOSP.TOTL                                 </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>..                                           </td><td>1                                            </td><td>..                                           </td><td>..                                           </td><td>..                                           </td></tr>
+	<tr><td>Aceh Barat Daya, Kab.               </td><td>IDN_Aceh_Barat_Daya_Kab_73623       </td><td>Human Development Index             </td><td>IDX.HDI                             </td><td>..                                  </td><td>..                                  </td><td>..                                  </td><td>..                                  </td><td>65.87778                            </td><td>66.86649                            </td><td>67.52173                            </td><td>68.36661                            </td><td>69.38033                            </td><td>..                                  </td><td>..                                  </td><td>70.95                               </td><td>..                                  </td><td>72.07                               </td><td>..                                  </td></tr>
+	<tr><td>Aceh Barat Daya, Kab.               </td><td>IDN_Aceh_Barat_Daya_Kab_73623       </td><td>Morbidity Rate (in %)               </td><td>SH.MORB.ZS                          </td><td>..                                  </td><td>..                                  </td><td>..                                  </td><td>..                                  </td><td>29.19532                            </td><td>..                                  </td><td>33.22042                            </td><td>35.90795                            </td><td>31.811                              </td><td>29.2377                             </td><td>30.0167                             </td><td>33.93033                            </td><td>30.5736273527145                    </td><td>29.909548163414                     </td><td>..                                  </td></tr>
+	<tr><td>Aceh Barat Daya, Kab.               </td><td>IDN_Aceh_Barat_Daya_Kab_73623       </td><td>Net Enrollment Ratio: Primary (in %)</td><td>SE.PRM.NENR.ZS                      </td><td>..                                  </td><td>..                                  </td><td>..                                  </td><td>..                                  </td><td>94.65                               </td><td>..                                  </td><td>94.89                               </td><td>94.34                               </td><td>96.21                               </td><td>96.55                               </td><td>98.32                               </td><td>86.16                               </td><td>90.96                               </td><td>95.395058                           </td><td>97.03                               </td></tr>
 </tbody>
 </table>
 
@@ -131,6 +124,22 @@ head(datakab); tail(datakab, n = 8)
 
 </div>
 </div>
+</div>
+
+
+
+<br>`n` adalah argumen opsional
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```R
+tail(datakab)
+
+```
+</div>
+
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
 
@@ -138,8 +147,6 @@ head(datakab); tail(datakab, n = 8)
 <table>
 <thead><tr><th></th><th scope="col">Region Name</th><th scope="col">Region Code</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th><th scope="col">2010 [YR2010]</th><th scope="col">2011 [YR2011]</th><th scope="col">2012 [YR2012]</th><th scope="col">2013 [YR2013]</th><th scope="col">2014 [YR2014]</th></tr></thead>
 <tbody>
-	<tr><th scope="row">12010</th><td>Yogyakarta, Kota                                                                     </td><td>IDN_Yogyakarta_Kota_17983                                                            </td><td>Villages with road: Dirt (in % of total villages)                                    </td><td>ROD.VILG.DIRT.ZS                                                                     </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td></tr>
-	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                                                     </td><td>IDN_Yogyakarta_Kota_17983                                                            </td><td>Villages with road: Gravel (in % of total villages)                                  </td><td>ROD.VILG.GRAVL.ZS                                                                    </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td></tr>
 	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                                                     </td><td>IDN_Yogyakarta_Kota_17983                                                            </td><td>Villages with road: Other (in % of total villages)                                   </td><td>ROD.VILG.OTHR.ZS                                                                     </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td><td>..                                                                                   </td></tr>
 	<tr><th scope="row">12013</th><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td></tr>
 	<tr><th scope="row">12014</th><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td><td>                                                                                     </td></tr>
@@ -157,14 +164,14 @@ head(datakab); tail(datakab, n = 8)
 
 
 
-- Lima baris terakhir bukan bagian dari data. Kita bisa gunakan indeks **positif** untuk memilih baris yang **dipertahankan**.
+<br>Lima baris terakhir tabel bukan merupakan data, sehingga perlu kita keluarkan. Kita bisa gunakan indeks **positif** untuk memilih baris yang **dipertahankan**,
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-tail(datakab[1:12012,])
+tail(datakab[1:12012,], 2)
 
 ```
 </div>
@@ -176,12 +183,8 @@ tail(datakab[1:12012,])
 <table>
 <thead><tr><th></th><th scope="col">Region Name</th><th scope="col">Region Code</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th><th scope="col">2010 [YR2010]</th><th scope="col">2011 [YR2011]</th><th scope="col">2012 [YR2012]</th><th scope="col">2013 [YR2013]</th><th scope="col">2014 [YR2014]</th></tr></thead>
 <tbody>
-	<tr><th scope="row">12007</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Total GDP based on expenditure (in IDR Million)     </td><td>NE.GDI.TOTL.CR                                      </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12008</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Total Population (in number of people)              </td><td>SP.POP.TOTL                                         </td><td>397398                                              </td><td>395775                                              </td><td>394140                                              </td><td>392492                                              </td><td>396238                                              </td><td>419163.765233477                                    </td><td>445258                                              </td><td>451118                                              </td><td>456915                                              </td><td>462663                                              </td><td>388627                                              </td><td>392506                                              </td><td>397594                                              </td><td>402679                                              </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12009</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Asphalt (in % of total villages)</td><td>ROD.VILG.ASPH.ZS                                    </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12010</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Dirt (in % of total villages)   </td><td>ROD.VILG.DIRT.ZS                                    </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Gravel (in % of total villages) </td><td>ROD.VILG.GRAVL.ZS                                   </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Other (in % of total villages)  </td><td>ROD.VILG.OTHR.ZS                                    </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
+	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Gravel (in % of total villages)</td><td>ROD.VILG.GRAVL.ZS                                  </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
+	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Other (in % of total villages) </td><td>ROD.VILG.OTHR.ZS                                   </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
 </tbody>
 </table>
 
@@ -193,7 +196,8 @@ tail(datakab[1:12012,])
 
 
 
-- atau gunakan indeks **negatif** untuk memilih baris yang **dibuang**
+<br> atau gunakan indeks **negatif** untuk memilih baris yang **dibuang**.
+> R memproses fungsi dari dalam ke luar. Namun penulisan seperti ini sulit dibaca dan diikuti urutan prosesnya. Karenanya, kini pemrograman R banyak menggunakan operator *piping* `%>%` dari library `magrittr`. `f() %>% g()` berarti output dari fungsi `f` akan menjadi argumen pertama dari fungsi `g`
 
 
 
@@ -201,7 +205,7 @@ tail(datakab[1:12012,])
 <div class="input_area" markdown="1">
 ```R
 library(magrittr)
-datakab[-12013:-12017,] %>% tail
+datakab[-12013:-12017,] %>% tail(3)
 
 ```
 </div>
@@ -213,12 +217,9 @@ datakab[-12013:-12017,] %>% tail
 <table>
 <thead><tr><th></th><th scope="col">Region Name</th><th scope="col">Region Code</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th><th scope="col">2010 [YR2010]</th><th scope="col">2011 [YR2011]</th><th scope="col">2012 [YR2012]</th><th scope="col">2013 [YR2013]</th><th scope="col">2014 [YR2014]</th></tr></thead>
 <tbody>
-	<tr><th scope="row">12007</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Total GDP based on expenditure (in IDR Million)     </td><td>NE.GDI.TOTL.CR                                      </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12008</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Total Population (in number of people)              </td><td>SP.POP.TOTL                                         </td><td>397398                                              </td><td>395775                                              </td><td>394140                                              </td><td>392492                                              </td><td>396238                                              </td><td>419163.765233477                                    </td><td>445258                                              </td><td>451118                                              </td><td>456915                                              </td><td>462663                                              </td><td>388627                                              </td><td>392506                                              </td><td>397594                                              </td><td>402679                                              </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12009</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Asphalt (in % of total villages)</td><td>ROD.VILG.ASPH.ZS                                    </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12010</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Dirt (in % of total villages)   </td><td>ROD.VILG.DIRT.ZS                                    </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Gravel (in % of total villages) </td><td>ROD.VILG.GRAVL.ZS                                   </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Other (in % of total villages)  </td><td>ROD.VILG.OTHR.ZS                                    </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
+	<tr><th scope="row">12010</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Dirt (in % of total villages)  </td><td>ROD.VILG.DIRT.ZS                                   </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
+	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Gravel (in % of total villages)</td><td>ROD.VILG.GRAVL.ZS                                  </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
+	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Other (in % of total villages) </td><td>ROD.VILG.OTHR.ZS                                   </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
 </tbody>
 </table>
 
@@ -230,19 +231,20 @@ datakab[-12013:-12017,] %>% tail
 
 
 
-- `%>%` adalah operator pipe dari library `magrittr`, yang mengirimkan output dari fungsi di sebelah kiri untuk menjadi input/argumen dari fungsi sebelah kanan
+<br>Subset juga bisa dibuat dengan memfilter tabel data agar hanya memberikan baris yang nilai variabelnya memenuhi kriteria yang ditetapkan. Kita bisa gunakan fungsi `which` untuk menghasilkan indeks baris yang memenuhi kriteria tersebut.
 
 
 
-- Subset juga bisa dibuat dengan memfilter tabel data agar hanya memberikan baris yang nilai variabelnya memenuhi kriteria yang ditetapkan 
-- Kita bisa gunakan fungsi `which` untuk menghasilkan indeks baris yang memenuhi kriteria tersebut
+> - Tanda titik dalam fungsi subset `[.,]` digunakan untuk memandu operator pipe bahwa input dari fungsi sebelumnya menjadi argumen di lokasi titik tersebut
+> - `$` digunakan untuk memilih kolom/variabel `Series Code` yang merupakan komponen dari tabel `datakab`
+> - nama variabel perlu diapit dengan *backtick* (```) hanya jika mengandung spasi  
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-which(datakab$`Series Code` != "") %>% datakab[.,] %>% tail
+which(datakab$`Series Code` != "") %>% datakab[.,] %>% tail(2)
 
 ```
 </div>
@@ -254,12 +256,8 @@ which(datakab$`Series Code` != "") %>% datakab[.,] %>% tail
 <table>
 <thead><tr><th></th><th scope="col">Region Name</th><th scope="col">Region Code</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th><th scope="col">2010 [YR2010]</th><th scope="col">2011 [YR2011]</th><th scope="col">2012 [YR2012]</th><th scope="col">2013 [YR2013]</th><th scope="col">2014 [YR2014]</th></tr></thead>
 <tbody>
-	<tr><th scope="row">12007</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Total GDP based on expenditure (in IDR Million)     </td><td>NE.GDI.TOTL.CR                                      </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12008</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Total Population (in number of people)              </td><td>SP.POP.TOTL                                         </td><td>397398                                              </td><td>395775                                              </td><td>394140                                              </td><td>392492                                              </td><td>396238                                              </td><td>419163.765233477                                    </td><td>445258                                              </td><td>451118                                              </td><td>456915                                              </td><td>462663                                              </td><td>388627                                              </td><td>392506                                              </td><td>397594                                              </td><td>402679                                              </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12009</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Asphalt (in % of total villages)</td><td>ROD.VILG.ASPH.ZS                                    </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>100                                                 </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12010</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Dirt (in % of total villages)   </td><td>ROD.VILG.DIRT.ZS                                    </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Gravel (in % of total villages) </td><td>ROD.VILG.GRAVL.ZS                                   </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                    </td><td>IDN_Yogyakarta_Kota_17983                           </td><td>Villages with road: Other (in % of total villages)  </td><td>ROD.VILG.OTHR.ZS                                    </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td><td>..                                                  </td></tr>
+	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Gravel (in % of total villages)</td><td>ROD.VILG.GRAVL.ZS                                  </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
+	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Other (in % of total villages) </td><td>ROD.VILG.OTHR.ZS                                   </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
 </tbody>
 </table>
 
@@ -271,81 +269,55 @@ which(datakab$`Series Code` != "") %>% datakab[.,] %>% tail
 
 
 
-- `$` digunakan untuk memilih kolom/variabel `Series Code` yang merupakan komponen dari tabel `datakab`
-- nama variabel perlu diapit dengan *backtick* ``` hanya jika mengandung spasi  
-
-
-
-- cara lain untuk memilih baris berdasar kriteria adalah menggunakan fungsi `filter` dari library `dplyr`
+<br>Cara lain untuk memilih baris berdasar kriteria adalah menggunakan fungsi `filter` dari library `dplyr`. 
+> - Kita bisa menggunakan fungsi dari suatu library tanpa memuatnya terlebih dulu dengan menggunakan `::`
+> - Bandingkan hasil perintah di bawah jika dijalankan tanpa awalan `dplyr::`
+> - Perbedaan tersebut terjadi karena fungsi `filter` yang digunakan berasal dari package lain
+> - Jika ada lebih dari satu fungsi yang bernama sama, R akan memprioritaskan fungsi dari library yang dimuat paling akhir.
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-filter(datakab, `Series Code` != "") 
+dplyr::filter(datakab, `Series Code` != "")  %>% tail(2)
 
 ```
 </div>
 
 <div class="output_wrapper" markdown="1">
 <div class="output_subarea" markdown="1">
-{:.output_traceback_line}
-```
 
-    Error in filter(datakab, `Series Code` != ""): object 'Series Code' not found
-    Traceback:
+<div markdown="0" class="output output_html">
+<table>
+<thead><tr><th></th><th scope="col">Region Name</th><th scope="col">Region Code</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th><th scope="col">2010 [YR2010]</th><th scope="col">2011 [YR2011]</th><th scope="col">2012 [YR2012]</th><th scope="col">2013 [YR2013]</th><th scope="col">2014 [YR2014]</th></tr></thead>
+<tbody>
+	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Gravel (in % of total villages)</td><td>ROD.VILG.GRAVL.ZS                                  </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
+	<tr><th scope="row">12012</th><td>Yogyakarta, Kota                                   </td><td>IDN_Yogyakarta_Kota_17983                          </td><td>Villages with road: Other (in % of total villages) </td><td>ROD.VILG.OTHR.ZS                                   </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td><td>..                                                 </td></tr>
+</tbody>
+</table>
 
+</div>
 
-    1. filter(datakab, `Series Code` != "")
-
-
-```
 </div>
 </div>
 </div>
 
 
 
-- Uups, hasilnya tidak seperti yang diinginkan
-- Ternyata kita belum memuat library `dplyr` sehingga fungsi `filter` yang digunakan di atas berasal dari library lain
-- Jika ada lebih dari satu fungsi yang bernama sama, R akan memprioritaskan fungsi dari library yang dimuat paling akhir.
-
-
-
-- Kita bisa memastikan fungsi `filter` yang digunakan adalah dari `dplyr`, walau kita belum memuatnya, dengan didului `dplyr::`
+<br>Jika sudah yakin indeks menghasilkan subset yang diinginkan, simpan subset tersebut menjadi objek. Jangan sertakan `tail` karena yang ingin disimpan adalah keseluruhan data, bukan cuma baris terbawah saja. 
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-dplyr::filter(datakab, `Series Code` != "") 
+datakab = dplyr::filter(datakab, `Series Code` != "") 
 
 ```
 </div>
 
 </div>
-
-
-
-- jika sudah yakin indeks menghasilkan subset yang diinginkan, simpan subset tersebut menjadi objek 
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```R
-datakab = .Last.value
-
-```
-</div>
-
-</div>
-
-
-
-- nilai dari perintah yang dijalankan terakhir  bisa dimuat kembali dengan `.Last.value`
 
 
 
@@ -354,14 +326,14 @@ datakab = .Last.value
 
 
 
-- seperti memilih baris, kita bisa memilih variabel menggunakan indeks kolom yang terletak setelah koma di fungsi subset `[]`
+Seperti memilih baris, kita bisa memilih variabel menggunakan indeks kolom yang terletak setelah koma di fungsi subset `[]`
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-datakab[,c(1, 3:5, ncol(datakab))] %>% tail
+c(1, 3:5, ncol(datakab)) %>% datakab[, .] %>% tail(4)
 
 ```
 </div>
@@ -373,8 +345,6 @@ datakab[,c(1, 3:5, ncol(datakab))] %>% tail
 <table>
 <thead><tr><th></th><th scope="col">Region Name</th><th scope="col">Series Name</th><th scope="col">Series Code</th><th scope="col">2000 [YR2000]</th><th scope="col">2014 [YR2014]</th></tr></thead>
 <tbody>
-	<tr><th scope="row">12007</th><td>Yogyakarta, Kota                                    </td><td>Total GDP based on expenditure (in IDR Million)     </td><td>NE.GDI.TOTL.CR                                      </td><td>..                                                  </td><td>..                                                  </td></tr>
-	<tr><th scope="row">12008</th><td>Yogyakarta, Kota                                    </td><td>Total Population (in number of people)              </td><td>SP.POP.TOTL                                         </td><td>397398                                              </td><td>..                                                  </td></tr>
 	<tr><th scope="row">12009</th><td>Yogyakarta, Kota                                    </td><td>Villages with road: Asphalt (in % of total villages)</td><td>ROD.VILG.ASPH.ZS                                    </td><td>100                                                 </td><td>..                                                  </td></tr>
 	<tr><th scope="row">12010</th><td>Yogyakarta, Kota                                    </td><td>Villages with road: Dirt (in % of total villages)   </td><td>ROD.VILG.DIRT.ZS                                    </td><td>..                                                  </td><td>..                                                  </td></tr>
 	<tr><th scope="row">12011</th><td>Yogyakarta, Kota                                    </td><td>Villages with road: Gravel (in % of total villages) </td><td>ROD.VILG.GRAVL.ZS                                   </td><td>..                                                  </td><td>..                                                  </td></tr>
@@ -390,7 +360,7 @@ datakab[,c(1, 3:5, ncol(datakab))] %>% tail
 
 
 
-- indeks kolom angka bisa digantikan dengan vektor nama variabel 
+<br>Indeks kolom angka bisa digantikan dengan vektor nama variabel 
 
 
 
@@ -426,15 +396,38 @@ datakab[,c('Region Code', 'Series Name')] %>% tail
 
 
 
-- Pemilihan variabel juga bisa menggunakan `dplyr::select`
+<br>Pemilihan variabel juga bisa menggunakan `dplyr::select`. Namun kali ini lebih baik `dplyr` dimuat dulu agar semua fungsi pembantunya bisa ikut digunakan. 
+> Ketika memuat `dplyr` akan ada pesan peringatan fungsi-fungsi dari package lain yang ditutupi oleh fungsi-fungsi `dplyr`. Fungsi `dplyr` itu sendiri akan berjalan baik, tapi penggunaan fungsi yang ditutupi kini perlu menyertakan prefix package asalnya.
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-library(dplyr); select(datakab, 'Region Code':'Series Code', -'Series Name', 
-                       region_name = 'Region Name', contains('YR'), -contains('YR201')) %>% tail
+library(dplyr)
+
+```
+</div>
+
+</div>
+
+
+
+Berapa ketentuan dalam pemilihan variabel di fungsi `select`:
+- Nama variabel yang mengandung spasi harus diapit tanda kutip 
+- Pilih sejumlah variabel yang berurutan cukup sebutkan variabel di pinggir, `var_kiri:var_kanan` 
+- Pilih semua variabel yang namanya memiliki kesamaan pola, baik diawali (`starts_with`), diakhiri (`ends_with`), atau mengandung (`contains`) karakter tertentu 
+- Gunakan tanda minus (`-`) untuk mengecualikan variabel 
+- Urutan kolom tabel baru mengikuti urutan variabel dalam `select`
+- Mengganti nama variabel yang dipilih, `nama_baru = nama_lama`
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```R
+select(datakab, 'Region Code':'Series Code', -'Series Name', 
+       region_name = 'Region Name', contains('YR'), -contains('YR201')) %>% tail(4)
 
 ```
 </div>
@@ -446,8 +439,6 @@ library(dplyr); select(datakab, 'Region Code':'Series Code', -'Series Name',
 <table>
 <thead><tr><th></th><th scope="col">Region Code</th><th scope="col">Series Code</th><th scope="col">region_name</th><th scope="col">2000 [YR2000]</th><th scope="col">2001 [YR2001]</th><th scope="col">2002 [YR2002]</th><th scope="col">2003 [YR2003]</th><th scope="col">2004 [YR2004]</th><th scope="col">2005 [YR2005]</th><th scope="col">2006 [YR2006]</th><th scope="col">2007 [YR2007]</th><th scope="col">2008 [YR2008]</th><th scope="col">2009 [YR2009]</th></tr></thead>
 <tbody>
-	<tr><th scope="row">12007</th><td>IDN_Yogyakarta_Kota_17983</td><td>NE.GDI.TOTL.CR           </td><td>Yogyakarta, Kota         </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td></tr>
-	<tr><th scope="row">12008</th><td>IDN_Yogyakarta_Kota_17983</td><td>SP.POP.TOTL              </td><td>Yogyakarta, Kota         </td><td>397398                   </td><td>395775                   </td><td>394140                   </td><td>392492                   </td><td>396238                   </td><td>419163.765233477         </td><td>445258                   </td><td>451118                   </td><td>456915                   </td><td>462663                   </td></tr>
 	<tr><th scope="row">12009</th><td>IDN_Yogyakarta_Kota_17983</td><td>ROD.VILG.ASPH.ZS         </td><td>Yogyakarta, Kota         </td><td>100                      </td><td>..                       </td><td>..                       </td><td>100                      </td><td>..                       </td><td>100                      </td><td>..                       </td><td>..                       </td><td>100                      </td><td>..                       </td></tr>
 	<tr><th scope="row">12010</th><td>IDN_Yogyakarta_Kota_17983</td><td>ROD.VILG.DIRT.ZS         </td><td>Yogyakarta, Kota         </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td></tr>
 	<tr><th scope="row">12011</th><td>IDN_Yogyakarta_Kota_17983</td><td>ROD.VILG.GRAVL.ZS        </td><td>Yogyakarta, Kota         </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td><td>..                       </td></tr>
@@ -463,27 +454,19 @@ library(dplyr); select(datakab, 'Region Code':'Series Code', -'Series Name',
 
 
 
-- Nama variabel yang mengandung spasi harus diapit tanda kutip 
-- Pilih sejumlah variabel yang berurutan cukup sebutkan variabel di pinggir, `var_kiri:var_kanan` 
-- Pilih semua variabel yang namanya memiliki kesamaan pola, baik diawali (`starts_with`), diakhiri (`ends_with`), atau mengandung (`contains`) karakter tertentu 
-- Gunakan tanda minus (`-`) untuk mengecualikan variabel 
-- Urutan kolom tabel baru mengikuti urutan variabel dalam `select`
-- Mengganti nama variabel yang dipilih, `nama_baru = nama_lama`
-
-
-
 ## Merubah Nama Variabel
 
 
 
-- jika hanya ingin mengganti nama sejumlah variabel, tanpa merubah struktur tabel data, gunakan `dplyr::rename`
+Jika hanya ingin mengganti nama sejumlah variabel, tanpa merubah struktur tabel data, gunakan `dplyr::rename`
+> hasil dari `rename` adalah tabel data, sehingga bisa langsung disubset dengan `[]` tanpa menggunakan *piping* `%>%`
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-rename(datakab, region_name = 'Region Name', series_code = 'Series Code') [100:103,]
+rename(datakab, region_name = 'Region Name', series_code = 'Series Code') [100:102,]
 
 ```
 </div>
@@ -498,7 +481,6 @@ rename(datakab, region_name = 'Region Name', series_code = 'Series Code') [100:1
 	<tr><th scope="row">100</th><td>Aceh Selatan, Kab.                         </td><td>IDN_Aceh_Selatan_Kab_73626                 </td><td>Number of schools at primary level         </td><td>SE.SCHL.PRM                                </td><td>333                                        </td><td>..                                         </td><td>..                                         </td><td>211                                        </td><td>..                                         </td><td>223                                        </td><td>..                                         </td><td>..                                         </td><td>128                                        </td><td>..                                         </td><td>..                                         </td><td>232                                        </td><td>..                                         </td><td>..                                         </td><td>..                                         </td></tr>
 	<tr><th scope="row">101</th><td>Aceh Selatan, Kab.                         </td><td>IDN_Aceh_Selatan_Kab_73626                 </td><td>Number of schools at Senior Secondary level</td><td>SE.SCHL.SRSEC                              </td><td>25                                         </td><td>..                                         </td><td>..                                         </td><td>21                                         </td><td>..                                         </td><td>25                                         </td><td>..                                         </td><td>..                                         </td><td>15                                         </td><td>..                                         </td><td>..                                         </td><td>40                                         </td><td>..                                         </td><td>..                                         </td><td>..                                         </td></tr>
 	<tr><th scope="row">102</th><td>Aceh Selatan, Kab.                         </td><td>IDN_Aceh_Selatan_Kab_73626                 </td><td>Poverty Line (in IDR)                      </td><td>SI.POV.NAPL                                </td><td>..                                         </td><td>..                                         </td><td>..                                         </td><td>..                                         </td><td>..                                         </td><td>171815                                     </td><td>186227                                     </td><td>196167                                     </td><td>203761                                     </td><td>236741                                     </td><td>257640                                     </td><td>278854                                     </td><td>281158                                     </td><td>283446                                     </td><td>285301                                     </td></tr>
-	<tr><th scope="row">103</th><td>Aceh Selatan, Kab.                         </td><td>IDN_Aceh_Selatan_Kab_73626                 </td><td>Poverty Rate (in % of population)          </td><td>SI.POV.NAPR.ZS                             </td><td>..                                         </td><td>..                                         </td><td>28.28                                      </td><td>29.25                                      </td><td>27.56                                      </td><td>26.43                                      </td><td>24.58                                      </td><td>24.72                                      </td><td>19.4                                       </td><td>17.5                                       </td><td>15.93                                      </td><td>15.52                                      </td><td>14.81                                      </td><td>13.44                                      </td><td>12.79                                      </td></tr>
 </tbody>
 </table>
 
@@ -510,11 +492,7 @@ rename(datakab, region_name = 'Region Name', series_code = 'Series Code') [100:1
 
 
 
-- fungsi subset `[]` bisa langsung digunakan tanpa piping  `%>%` setelah fungsi yang menghasilkan objek yang bisa di-subset
-
-
-
-- merubah nama bisa pula dilakukan dengan meng-*assign* vektor nama baru dengan panjang sama seperti nama yang hendak digantikan
+<br>Merubah nama bisa pula dilakukan dengan meng-*assign* vektor nama baru dengan panjang sama seperti nama yang hendak digantikan
 
 
 
@@ -527,11 +505,25 @@ names(datakab) %>% t
 ```
 </div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+<div markdown="0" class="output output_html">
+<table>
+<tbody>
+	<tr><td>REGION NAME  </td><td>REGION CODE  </td><td>SERIES NAME  </td><td>Series Code  </td><td>2000 [YR2000]</td><td>2001 [YR2001]</td><td>2002 [YR2002]</td><td>2003 [YR2003]</td><td>2004 [YR2004]</td><td>2005 [YR2005]</td><td>2006 [YR2006]</td><td>2007 [YR2007]</td><td>2008 [YR2008]</td><td>2009 [YR2009]</td><td>2010 [YR2010]</td><td>2011 [YR2011]</td><td>2012 [YR2012]</td><td>2013 [YR2013]</td><td>2014 [YR2014]</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+</div>
 </div>
 
 
 
-- `janitor::clean_names` merubah nama variabel agar mengikuti gaya standar 
+Format penulisan nama-nama variabel di atas akan mempersulit penulisan program selanjutnya.  Fungsi `clean_names` dari package `janitor` bisa merubah sekaligus seluruh nama variabel dalam data agar mengikuti gaya penulisan nama variabel yang banyak disarankan.
 
 
 
@@ -562,10 +554,15 @@ names(datakab) %>% t
 
 
 
+Kita bisa sederhanakan lagi nama-nama variabel tahun dengan hanya mengambil karakter setelah garis bawah ( _ ). Kita gunakan fungsi `str_replace` dari library `stringr` untuk mendeteksi pola karakter yang ingin dihapus, yakni diganti dengan karakter kosong (`''`)
+
+
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-datakab %<>% rename_at(vars(starts_with('x20')), funs(str_replace(., 'x20[0-9][0-9]_', ''))) 
+datakab %<>% rename_at(vars(starts_with('x20')), 
+                       funs(stringr::str_replace(., 'x20[0-9][0-9]_', ''))) 
 datakab %>% names %>% t
 
 ```
@@ -593,7 +590,7 @@ datakab %>% names %>% t
 
 
 
-- Untuk keperluan latihan penggabungan, datakab dipecah menjadi dua data dengan variabel berbeda kecuali variabel ID
+Untuk keperluan latihan penggabungan, datakab dipecah menjadi dua data dengan variabel berbeda kecuali variabel ID
 
 
 
@@ -651,7 +648,8 @@ names(data2) %>% t
 
 
 
-- gabungkan dua data tersebut menggunakan  `merge` dari base R, atau seri fungsi `_join` dari `dplyr`
+<br>Lalu gabungkan dua data tersebut menggunakan  `merge` dari base R, atau seri fungsi 
+`_join` dari `dplyr`. Penggabungan baris berdasar variabel ID dalam argumen `by`. Jika ada variabel bernama sama tapi tidak menjadi argumen `by`, maka di data baru variabel tersebut akan ditambahi akhiran `.x` dan `.y`
 
 
 
@@ -684,12 +682,11 @@ merge(data1, data2, by = c('region_code', 'series_code')) %>% tail(3)
 
 
 
-- Penggabungan baris berdasar variabel ID dalam argumen `by`
-- jika ada variabel bernama sama tapi tidak menjadi argumen `by`, maka di data baru akan ditambahi akhiran `.x` dan `.y`
-- jika variabel id berbeda nama di kedua data, 
-  
-  `by = c("id1_I" = "id1_II", "id2_I" = "id2_II")`
-- jika tidak ada argumen `by`, penggabungan dilakukan dengan semua variabel bernama sama
+<br>Jika variabel id berbeda nama di kedua data, pasangkan variabel id dari kedua data dengan tanda `=`, dengan format 
+```
+by = c("ID1_data1" = "ID1_data2", "ID2_data1" = "ID2_data2")
+```
+Jika tidak ada argumen `by`, penggabungan dilakukan dengan semua variabel bernama sama
 
 
 
@@ -722,9 +719,11 @@ dplyr::inner_join(data1, data2) %>% tail(3)
 
 
 
-- Secara default, hasil merge hanya mempertahankan baris dengan ID yang terdapat di kedua data yang digabungkan. Hasil default merge ini ekuivalen dengan hasil dari `dplyr::inner_join`
-- jika ingin semua baris dipertahankan walau ID hanya terdapat di salah satu data, maka gunakan argumen `all = TRUE`. Ini ekuivalen dengan hasil dari `dplyr::all_join`
-- jika hanya ingin mempertahankan semua baris dari salah satu data 
+Secara default, hasil merge hanya mempertahankan baris dengan ID yang terdapat di kedua data yang digabungkan. Hasil default merge ini ekuivalen dengan hasil dari `dplyr::inner_join`
+
+Jika ingin semua baris dipertahankan walau ID hanya terdapat di salah satu data, maka gunakan argumen `all = TRUE`. Ini ekuivalen dengan hasil dari `dplyr::all_join`
+
+Jika hanya ingin mempertahankan semua baris dari salah satu data 
   - data I gunakan `all.x = TRUE`, ekuivalen dengan `dplyr::left_join`
   - data II gunakan `all.y = TRUE`, ekuivalen dengan `dplyr::right_join`
 
@@ -734,7 +733,8 @@ dplyr::inner_join(data1, data2) %>% tail(3)
 
 
 
-- Bisa merubah nilai sel tertentu dengan menunjukkan lokasi baris dan kolomnya
+Data dalam tabel bisa dirubah dengan meng-*assign* nilai baru ke lokasi baris dan kolom yang ingin dirubah. Dimensi nilai yang di-*assign* harus sama dengan dimensi data yang dirubah. Berikut ini data di baris kedua dan kolom kelima `datakab` diganti dari karakter ".." menjadi `NA`
+> `NA`, kependekan dari *Not Available*, adalah cara R mengeksplisitkan bagian data yang tidak memiliki nilai (*missing values*). Sel yang tampak kosong di R adalah karakter kosong yang dianggap ada datanya, yakni observasi yang valid.
 
 
 
@@ -780,39 +780,11 @@ datakab[2,5]
 
 
 
-- Nilai yang disimpan ke objek bisa ditampilkan dengan menaruh keseluruhan perintah ke dalam tanda kurung `()` 
+Di bawah ini bisa dilihat bahwa variabel-variabel tahun didominasi dengan karakter ".." yang sebenarnya mewakili *missing values*. Karena di atas kita telah mengganti satu observasi menjadi `NA` dalam kolom ke-5 data, yakni variabel `yr2000`,  maka variabel tersebut tidak lagi valid 100%. 
 
 
 
-- Gunakan kombinasi `dplyr::mutate` dan  `ifelse` untuk merubah nilai suatu variabel yang memenuhi syarat tertentu.
-
-
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```R
-head(datakab, 2)
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-<div markdown="0" class="output output_html">
-<table>
-<thead><tr><th scope="col">region_name</th><th scope="col">region_code</th><th scope="col">series_name</th><th scope="col">series_code</th><th scope="col">yr2000</th><th scope="col">yr2001</th><th scope="col">yr2002</th><th scope="col">yr2003</th><th scope="col">yr2004</th><th scope="col">yr2005</th><th scope="col">yr2006</th><th scope="col">yr2007</th><th scope="col">yr2008</th><th scope="col">yr2009</th><th scope="col">yr2010</th><th scope="col">yr2011</th><th scope="col">yr2012</th><th scope="col">yr2013</th><th scope="col">yr2014</th></tr></thead>
-<tbody>
-	<tr><td>Aceh Barat Daya, Kab.        </td><td>IDN_Aceh_Barat_Daya_Kab_73623</td><td>Human Development Index      </td><td>IDX.HDI                      </td><td>..                           </td><td>..                           </td><td>..                           </td><td>..                           </td><td>65.87778                     </td><td>66.86649                     </td><td>67.52173                     </td><td>68.36661                     </td><td>69.38033                     </td><td>..                           </td><td>..                           </td><td>70.95                        </td><td>..                           </td><td>72.07                        </td><td>..                           </td></tr>
-	<tr><td>Aceh Barat Daya, Kab.        </td><td>IDN_Aceh_Barat_Daya_Kab_73623</td><td>Morbidity Rate (in %)        </td><td>SH.MORB.ZS                   </td><td>NA                           </td><td>..                           </td><td>..                           </td><td>..                           </td><td>29.19532                     </td><td>..                           </td><td>33.22042                     </td><td>35.90795                     </td><td>31.811                       </td><td>29.2377                      </td><td>30.0167                      </td><td>33.93033                     </td><td>30.5736273527145             </td><td>29.909548163414              </td><td>..                           </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-</div>
-</div>
+> `dfSummary` dari package `summarytools` menampilkan ringkasan karakteristik data. Argumen `graph.col = F` digunakan karena informasi pada histogram sudah diwakili oleh kolom frekuensi `Freqs`. Demikian pula `na.col` yang mengandung jumlah dan persentase *missing values* adalah kebalikan dari kolom `Valid`. 
 
 
 
@@ -863,6 +835,11 @@ No   Variable      Stats / Values    Freqs (% of Valid)   Valid
 </div>
 </div>
 </div>
+
+
+
+- Salah satu unsur penyiapan data untuk analisis adalah mengeksplisitkan seluruh *missing values* pada data menjadi `NA` agar diproses secara benar dalam analisis berikutnya
+- Gunakan kombinasi `dplyr::mutate` dan  `ifelse` untuk merubah nilai suatu variabel yang memenuhi syarat tertentu.
 
 
 
@@ -930,24 +907,41 @@ No   Variable      Stats / Values    Freqs (% of Valid)   Valid
 
 
 
-- Gunakan `mutate_at` untuk menerapkan perubahan ke semua variabel yang dipilih
-
-
-
-- Agar perintah perubahan bisa diterapkan ke semua variabel, variabel dalam perintah diwakili dengan simbol titik (`.`)
+- Mutasi variabel yr2000 dan yr2001 telah merubah seluruh nilai ".." menjadi `NA`
+- Gunakan `mutate_at` untuk memutasi sekaligus semua variabel yang dipilih dengan fungsi yang sama, tanpa harus mengulang satu per satu
+- Agar perintah perubahan bisa diterapkan ke semua variabel, variabel dalam diwakili dengan simbol titik (`.`) dalam argumen `funs`
 
 
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```R
-datakab %<>% mutate_at(vars(starts_with("yr20")), funs(ifelse(. == '..', NA, .))) %>%
-             mutate_at(vars(starts_with("yr20")), as.numeric)
+datakab %<>% mutate_at(vars(starts_with("yr20")), funs(ifelse(. == '..', NA, .))) 
 
 ```
 </div>
 
 </div>
+
+
+
+Data pada variabel-variabel yang diawali `yr` pada dasarnya merupakan variabel angka, sehingga lebih baik dikonversi menjadi tipe angka dengan `as.numeric`.
+
+
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```R
+datakab %<>% mutate_at(vars(starts_with("yr20")), as.numeric)
+
+```
+</div>
+
+</div>
+
+
+
+`dfSummary` kini dapat menyajikan statitik yang meringkas variabel angka, bukan hanya frekuensi tiap nilai uniknya.
 
 
 
@@ -1214,11 +1208,7 @@ ls()
 <div class="output_subarea" markdown="1">
 
 <div markdown="0" class="output output_html">
-<ol class=list-inline>
-	<li>'datakab'</li>
-	<li>'indodapoer'</li>
-</ol>
-
+'datakab'
 </div>
 
 </div>

@@ -24,7 +24,7 @@
 # Top-level page
 - title: Sampul
   url: /Sampul
-  not_numbered: true
+  # not_numbered: true
 # Divider for meta-pages and content page
 - divider: true
 # External link
@@ -41,9 +41,9 @@
 - title: Visualisasi Data
   url: /Visual
 - title: Pengantar Ekonometri
-  url: /Sampul
+  url: /IntroMetrics
 - title: Estimasi dan Pelaporan
-  url: /Sampul
+  url: /EstimReport
 
 
 # # Adds a searchbar link

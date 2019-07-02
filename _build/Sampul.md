@@ -14,8 +14,18 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Statistik dan Ekonometri
-# *Aplikasi dengan R*
-**(Work in progress)**
+
+# R untuk Statistik dan Ekonometri
+
+
+
 ## [Muhamad Said Fathurrohman](https://said.pw)
+
+
+
 ![cover](images/cover.png)
+
+
+
+**Update terakhir 2 Juli 2019**
+
