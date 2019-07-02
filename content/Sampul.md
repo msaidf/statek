@@ -1,15 +1,3 @@
----
-redirect_from:
-  - "/sampul"
-title: 'Sampul'
-prev_page:
-  url: 
-  title: ''
-next_page:
-  url: /Pembuka
-  title: 'Pembuka'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 # Statistik dan Ekonometri<br>*Aplikasi dengan R*
 
 **(rev. 3 Juli 2019)**

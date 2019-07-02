@@ -1,15 +1,3 @@
----
-redirect_from:
-  - "/intrometrics"
-title: 'Pengantar Ekonometri'
-prev_page:
-  url: /Visual
-  title: 'Visualisasi Data'
-next_page:
-  url: /EstimReport
-  title: 'Estimasi dan Pelaporan'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 # Pengantar Ekonometri
 
 

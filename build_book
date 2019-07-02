@@ -1,0 +1,5 @@
+jupyter-book build --overwrite .
+sed -i 's/scope=row/scope="row"/g' _build/MenyiapkanData.md 
+sed -i 's/scope=col/scope="col"/g' _build/MenyiapkanData.md 
+sed -i 's/scope=row/scope="row"/g' _build/EstimReport.md 
+sed -i 's/scope=col/scope="col"/g' _build/EstimReport.md

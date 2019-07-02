@@ -1,15 +1,3 @@
----
-redirect_from:
-  - "/introstat"
-title: 'Pengantar Statistik'
-prev_page:
-  url: /Pembuka
-  title: 'Pembuka'
-next_page:
-  url: /IntroR
-  title: 'Pengenalan R'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 # Pengantar Statistik
 
 

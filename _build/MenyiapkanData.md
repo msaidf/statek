@@ -838,8 +838,8 @@ No   Variable      Stats / Values    Freqs (% of Valid)   Valid
 
 
 
-- Salah satu unsur penyiapan data untuk analisis adalah mengeksplisitkan seluruh *missing values* pada data menjadi `NA` agar diproses secara benar dalam analisis berikutnya
-- Gunakan kombinasi `dplyr::mutate` dan  `ifelse` untuk merubah nilai suatu variabel yang memenuhi syarat tertentu.
+Salah satu unsur penyiapan data untuk analisis adalah mengeksplisitkan seluruh *missing values* pada data menjadi `NA` agar diproses secara benar dalam analisis berikutnya. Untuk keperluan ini,  kombinasi `dplyr::mutate` dan  `ifelse` bisa digunakan untuk merubah seluruh nilai variabel ".." menjadi `NA`.
+> `ifelse` akan memberikan nilai argumen kedua jika ekspresi di argumen pertamanya benar, dan memberikan nilai argumen ketiga jika ekspresi tersebut salah. Uji kesamaan di R menggunakan simbol `==`, bukan `=`. Ketidaksamaan menggunakan simbol `!=`. Sementara relasi lainnya menggunakan simbol matematika seperti umumnya, `<`, `>`, `<=`, dan `>=`. 
 
 
 
@@ -907,9 +907,7 @@ No   Variable      Stats / Values    Freqs (% of Valid)   Valid
 
 
 
-- Mutasi variabel yr2000 dan yr2001 telah merubah seluruh nilai ".." menjadi `NA`
-- Gunakan `mutate_at` untuk memutasi sekaligus semua variabel yang dipilih dengan fungsi yang sama, tanpa harus mengulang satu per satu
-- Agar perintah perubahan bisa diterapkan ke semua variabel, variabel dalam diwakili dengan simbol titik (`.`) dalam argumen `funs`
+Gunakan `mutate_at` untuk memutasi sekaligus semua variabel yang dipilih dengan fungsi yang sama, tanpa harus mengulang satu per satu. Agar perintah mutasi bisa diterapkan ke semua variabel, nama variabel diganti dengan titik (`.`) dalam argumen `funs`
 
 
 
@@ -1017,10 +1015,9 @@ datakab %>% head(2)
 
 
 
-- Kolom `series_code` dan `series_name` sebenarnya merupakan nama variabel
-- Untuk menjadikan data tersebut rapi, yakni siap untuk dianalisis, nama-nama variabel tersebut perlu dijadikan nama kolom dalam tabel data
-- `dplyr::spread` merubah tabel dari bentuk panjang ke bentuk lebar
-- Salah satu dari `series_code` atau `series_name` perlu dibuang karena sebenarnya mewakili observasi yang sama
+Kolom `series_code` dan `series_name` sebenarnya berisikan nama-nama variabel. Agar data rapi, siap analisis, nama-nama variabel dalam kolom tersebut perlu dijadikan sebagai nama kolom. 
+
+`dplyr::spread` bisa digunakan untuk keperluan ini. Dalam menerapkannya, salah satu dari `series_code` atau `series_name` perlu dibuang dulu karena redundan dan justru membuat hasilnya tak sesuai harapan.
 
 
 
@@ -1056,29 +1053,8 @@ datakab %>% head(2)
 
 
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```R
-names(datakab) %>% str_replace_all('(.+)\\(in .+\\)', '\\1') %>% t
-
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-<div markdown="0" class="output output_html">
-<table>
-<tbody>
-	<tr><td>region_name                                            </td><td>region_code                                            </td><td>year                                                   </td><td>human_development_index                                </td><td>morbidity_rate_in_percent                              </td><td>net_enrollment_ratio_junior_secondary_in_percent       </td><td>net_enrollment_ratio_primary_in_percent                </td><td>net_enrollment_ratio_senior_secondary_in_percent       </td><td>number_of_doctors                                      </td><td>number_of_hospitals                                    </td><td>...                                                    </td><td>number_of_schools_at_senior_secondary_level            </td><td>poverty_gap_index                                      </td><td>poverty_line_in_idr                                    </td><td>poverty_rate_in_percent_of_population                  </td><td>total_gdp_based_on_expenditure_in_idr_million          </td><td>total_population_in_number_of_people                   </td><td>villages_with_road_asphalt_in_percent_of_total_villages</td><td>villages_with_road_dirt_in_percent_of_total_villages   </td><td>villages_with_road_gravel_in_percent_of_total_villages </td><td>villages_with_road_other_in_percent_of_total_villages  </td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-</div>
-</div>
+Nama kolom-kolom baru ini tidak memenuhi gaya standar. `janitor::clean_names` bisa digunakan lagi untuk menstandarisasi nama. Dan sekedar untuk menyingkat nama variabel, bagian  nama yang menjelaskan unit pengukuran bisa dihapus dengan bantuan fungsi `str_replace_all` dari library `stringr`.
+> `str_replace` dan `str_detect` mencari urutan karakter yang memenuhi pola yang dispesifikasi menggunakan syntax [regular expression](https://regex101.com).
 
 
 

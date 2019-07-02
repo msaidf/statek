@@ -16,7 +16,7 @@
 
 #######################################################################################
 # Jekyll site settings
-title: R untuk Statistik\n dan Ekonometri
+title: Statistik dan Ekonometri<br>Aplikasi dengan R
 author: Muhamad Said Fathurrohman
 email: me[at]said[dot]pw
 description: >-
@@ -34,8 +34,7 @@ show_sidebar: true                # Show the sidebar. Only set to false if your 
 collapse_inactive_chapters: false  # Whether to collapse the inactive chapters in the sidebar
 textbook_logo: https://cran.r-project.org/Rlogo.svg     # A logo to be displayed at the top of your textbook sidebar
 textbook_logo_link: https://www.said.pw/statek/                    # A link for the logo.
-sidebar_footer_text: Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter
-  Book</a>
+sidebar_footer_text: <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Buku ini dilisensi dengan <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 number_toc_chapters: false         # Whether to add numbers to chapterse in your Table of Contents. If true, you can control this at the Chapter level in _data/toc.yml
 
 # Search settings
@@ -71,7 +70,7 @@ use_show_widgets_button: true                # If 'true', display a button to al
 
 # Download settings
 use_download_button: true                # If 'true', display a button to download a zip file for the notebook
-download_button_text: Notebook                # The text that download buttons will contain
+download_button_text: Download                # The text that download buttons will contain
 
 #######################################################################################
 # Jupyter book extensions and additional features
@@ -85,7 +84,7 @@ scholar:
 
 # Navigate to https://analytics.google.com, add a new property for your jupyter book and copy the tracking id here.
 google_analytics:
-  mytrackingcode:
+  mytrackingcode: UA-7121720-5
 
 #######################################################################################
 # Jupyter book settings you probably don't need to change

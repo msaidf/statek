@@ -1,15 +1,3 @@
----
-redirect_from:
-  - "/intror"
-title: 'Pengenalan R'
-prev_page:
-  url: /IntroStat
-  title: 'Pengantar Statistik'
-next_page:
-  url: /MenyiapkanData
-  title: 'Menyiapkan Data'
-comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
----
 # Pengenalan R
 
 ## Software Statistik

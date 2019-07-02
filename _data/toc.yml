@@ -24,6 +24,8 @@
 # Top-level page
 - title: Sampul
   url: /Sampul
+- title: Pembuka
+  url: /Pembuka
   # not_numbered: true
 # Divider for meta-pages and content page
 - divider: true
@@ -44,6 +46,7 @@
   url: /IntroMetrics
 - title: Estimasi dan Pelaporan
   url: /EstimReport
+- divider: true
 
 
 # # Adds a searchbar link
